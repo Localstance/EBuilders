@@ -194,8 +194,8 @@ var validator = (function () {
    * {Private} - Perform simulating of login process. It check user input with mock data in object. If all data is valid
    * it will call app.renderAfterLogin method (imitate successful auth). If something went wrong - it will render error
    * panels on UI with description of error.
-   * @params name {String} - username
-   * @params pass {String} - password
+   * @param name {String} - username
+   * @param pass {String} - password
    * @returns {Boolean} - true/false if process ends as predicted (or not).
    */
   function simulateCheckingUser(name, pass) {
