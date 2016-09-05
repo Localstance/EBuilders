@@ -6,6 +6,7 @@
   <li>Run <code>gulp start</code> or <code>gulp</code> in command line. 
     Now the server is running on <a href="http://localhost:8000" title="server">http://localhost:8000</a></li>
   <li>Have fun :)</li>
+  <li>You can use one of this accounts (login/password):  Admin/admin, Sasha/qwerty and John/12345678</li>
 </ol>
 
 <h3>Gulp tasks:</h3>
