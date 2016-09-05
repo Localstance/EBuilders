@@ -198,6 +198,10 @@ var MD5 = function (string) {
 
   return temp.toLowerCase();
 }
+/**
+ * JSON mock object with users data. Used to simalate login process
+ * @type {Object}
+ */
 var mockUsers = [
   {
     username: 'Admin',
@@ -213,6 +217,11 @@ var mockUsers = [
   }
 ];
 
+
+/**
+ * App module. Contain some public methods such as rendering after login/logout
+ * @type {Object}
+ */
 var app = (function () {
   var loggedInfo = getFromStorage('sessionInfo');
   var headingTitle = document.querySelector('.header__title');
@@ -221,10 +230,17 @@ var app = (function () {
   var slider = document.querySelector('.slider');
   var logoutButton = document.querySelector('.logout-btn');
 
+  /* If some user logged in previously */
   if (loggedInfo[0] !== undefined) {
     renderAfterLogin(loggedInfo[0].username);
   }
 
+
+  /**
+   * @description
+   * {Public} - It takes user name and perform rendering of slider, greeting and logout button.
+   * @param name {String} - user name
+   */
   function renderAfterLogin(name) {
     username.innerHTML = name;
     headingTitle.classList.remove('hidden');
@@ -234,6 +250,11 @@ var app = (function () {
     saveSession(name);
   }
 
+
+  /**
+   * @description
+   * {Public} - Render page after logout.
+   */
   function renderAfterLogout() {
     headingTitle.classList.add('hidden');
     slider.classList.add('hidden');
@@ -242,6 +263,12 @@ var app = (function () {
     clearStorage();
   }
 
+
+  /**
+   * @description
+   * {Private} - Save users data from storage.
+   * @param name {String} - value to save in storage
+   */
   function saveSession(name) {
     var value = [{}];
     if (window.localStorage) {
@@ -250,6 +277,13 @@ var app = (function () {
     }
   }
 
+
+  /**
+   * @description
+   * {Public} - Get users data from storage. Used to check auth status. It returns empty array if no users data are saved.
+   * @param key {String} - key used in local storage.
+   * @returns {Array} - json user data
+   */
   function getFromStorage(key) {
     if (window.localStorage) {
       return JSON.parse(window.localStorage.getItem(key)) || [];
@@ -257,6 +291,11 @@ var app = (function () {
     return [];
   }
 
+
+  /**
+   * @description
+   * {Private} - Helper method to clear data from storage. Can be used after logout.
+   */
   function clearStorage() {
     if (window.localStorage) {
       window.localStorage.clear();
@@ -264,7 +303,6 @@ var app = (function () {
   }
 
   /* add listeners*/
-
   logoutButton.addEventListener('click', function (e) {
     e.preventDefault();
     renderAfterLogout();
@@ -273,10 +311,16 @@ var app = (function () {
   return {
     renderAfterLogin: renderAfterLogin,
     renderAfterLogout: renderAfterLogout,
-    getFromStorage: getFromStorage
+    getFromStorage: getFromStorage,
+    clearStorage: clearStorage
   };
 })();
 
+
+/**
+ * Validator module. Contain main public method - validate.
+ * @type {Object}
+ */
 var validator = (function () {
   var form = document.querySelector('.login__form');
   var username = form.querySelector('#login__username');
@@ -289,6 +333,12 @@ var validator = (function () {
     passwordInvalid: form.querySelector('.login__password__error--invalid')
   };
 
+
+  /**
+   * @description
+   * {Public} - Method calls private validation methods. After success it calls simulation of login process.
+   * @param e {Object} - event object from listener
+   */
   function validate(e) {
     e.preventDefault();
     validateUserName();
@@ -299,6 +349,13 @@ var validator = (function () {
     }
   }
 
+
+  /**
+   * @description
+   * {Private} - Validate username field. For now it only checks length of name (greater then 3).
+   * But here we can perform other restrictions. If username field fits acceptance criteria
+   * we put 'isValid' flag to 'true'. If no - 'false'.
+   */
   function validateUserName() {
     /* Check length of username. Hide and show error messages */
     if (username.value.length < 3) {
@@ -312,6 +369,13 @@ var validator = (function () {
     }
   }
 
+
+  /**
+   * @description
+   * {Private} - Validate password field. For now it only checks the length of a password (greater then 5).
+   * But here we can perform other restrictions and validations.
+   * If password field fits acceptance criteria we put 'isValid' flag to 'true'. If no - 'false'.
+   */
   function validatePassword() {
     if (password.value.length < 5) {
       password.classList.add('login__input--error');
@@ -324,13 +388,22 @@ var validator = (function () {
     }
   }
 
+
+  /**
+   * @description
+   * {Private} - Perform simulating of login process. It check user input with mock data in object. If all data is valid
+   * it will call app.renderAfterLogin method (imitate successful auth). If something went wrong - it will render error
+   * panels on UI with description of error.
+   * @param name {String} - username
+   * @param pass {String} - password
+   * @returns {Boolean} - true/false if process ends as predicted (or not).
+   */
   function simulateCheckingUser(name, pass) {
     var user = mockUsers.filter(function (item) {
       if (item.username.toLowerCase() === name.toLowerCase()) {
         return item;
       }
     });
-
 
     if (user.length < 1) {
       username.classList.add('login__input--error');
@@ -357,15 +430,26 @@ var validator = (function () {
   };
 })();
 
+
+/**
+ * For now it just a function. But it can contains more complex logic for working with form.
+ * Now it works like a controller by adding listener to submit button.
+ * @type {Object}
+ */
 var form = (function () {
   var form = document.querySelector('.login__form');
   var submit = form.querySelector('.login__submit');
 
   /* Add listeners*/
   submit.addEventListener('click', validator.validate);
-
+  return {};
 })();
 
+
+/**
+ * Slider module. It return object with public method 'showNext'. Used to perform loop slider.
+ * @type {Object}
+ */
 var slider = (function () {
   var sliderWrap = document.querySelector('.slider');
   var controlRight = sliderWrap.querySelector('.slider__controls--next');
@@ -376,6 +460,14 @@ var slider = (function () {
   var active = slides[0];
   var activeClass = 'slider__item--current';
 
+
+  /**
+   * @description
+   * {Public} - Perform navigation between slides. It takes direction as an argument. This parameter is a number that we
+   * used to show direction of slide. '1' if we click right control button, '-1' - left control button. '0' - is used by
+   * default after page loading to show first slide.
+   * @params direction {Number} - direction
+   */
   function showNext(direction) {
     active.classList.remove(activeClass);
     cnt += direction;
