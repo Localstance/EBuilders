@@ -1,0 +1,52 @@
+.footer {
+  font-family: 'SourceSanPro', Arial, sans-serif;
+  background: $gray-smooth;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__wrap {
+    @include flex-alignment;
+    max-width: 1080px;
+    margin: 20px auto;
+    height: 50px;
+  }
+
+  &__logo {
+    font-family: 'OswaldLight', Arial, sans-serif;
+    color: $white;
+    font-size: 2.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .social {
+    @include flex-alignment;
+
+    &__list {
+      @include flex-alignment;
+    }
+
+    &__item {
+      margin-left: 15px;
+      transition: all .3s linear;
+      &:hover {
+        opacity: .9;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      font-size: 2em;
+      color: $silver;
+    }
+
+    &__copyright {
+      color: $white;
+      margin-left: 25px;
+    }
+
+  }
+
+}

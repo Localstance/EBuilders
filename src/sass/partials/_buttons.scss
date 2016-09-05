@@ -1,0 +1,34 @@
+.button {
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: $white;
+  text-transform: uppercase;
+  font: 18px/18px 'Oswald';
+  box-shadow: none;
+  outline: 0;
+  padding: 12px 30px;
+  transition: background .2s linear;
+
+  &--success {
+    background: $lime-green;
+    border-color: $lime-green;
+
+    &:hover {
+      background: $lime-dark-green;
+      border-color: $lime-dark-green;
+    }
+  }
+
+  &--info {
+    background: $blue;
+    border-color: $blue;
+
+    &:hover {
+      background: $dark-blue;
+      border-color: $dark-blue;
+    }
+  }
+
+}

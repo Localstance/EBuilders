@@ -1,0 +1,14 @@
+/* Import variables, mixins and colors */
+@import "../modules/colors.scss";
+@import "../modules/mixins.scss";
+
+/* Include fonts */
+@include font-face(SourceSanPro, '../fonts/sourcesanspro/sourcesanspro-regular');
+@include font-face(SourceSanProLight, '../fonts/sourcesanspro/sourcesanspro-light');
+@include font-face(SourceSanProBold, '../fonts/sourcesanspro/sourcesanspro-bold');
+
+@include font-face(Oswald, '../fonts/font-oswald/oswald-regular');
+@include font-face(OswaldLight, '../fonts/font-oswald/oswald-light');
+@include font-face(OswaldBold, '../fonts/font-oswald/oswald-bold');
+
+.hidden { display: none; }

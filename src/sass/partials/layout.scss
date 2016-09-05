@@ -1,0 +1,9 @@
+body {
+  font-size: 10px;
+  font-family: 'SourceSanPro', Arial, sans-serif;
+}
+
+#wrapper {
+  @include alignment;
+  width: 100%;
+}

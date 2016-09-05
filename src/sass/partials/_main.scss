@@ -1,0 +1,41 @@
+.main {
+  &__wrap {
+    @include alignment;
+    max-width: 1080px;
+  }
+
+  .login {
+
+    padding: 30px 0;
+
+    &__form {
+      width: 30%;
+    }
+
+    &__label {
+      font-size: 1.7em;
+    }
+
+    &__input {
+      width: 100%;
+      height: 33px;
+      border: 1px solid $gray-light;
+      padding: 6px 12px;
+      vertical-align: middle;
+      color: $gray-smooth;
+      margin: 20px 0;
+      outline: none;
+    }
+
+    &__input--error {
+      border-color: $red;
+    }
+
+    &__username__error,
+    &__password__error {
+      color: $red;
+    }
+
+  }
+
+}

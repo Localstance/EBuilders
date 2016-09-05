@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Middle level task</title>
+  <link rel="stylesheet" media="screen" href="css/reset.css">
+  <link rel="stylesheet" media="screen" href="css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="wrapper">
+    <header class="header">
+      <div class="header__wrap">
+        <a href="#" class="header__logo" title="Company logo">
+          <img src="images/babel-logo.png" width="175" height="60" alt="Company logo"/>
+        </a>
+        <div class="header__title hidden">
+          <h2><span class="js-username"></span>, welcome to our site!</h2>
+        </div>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--active"><a href="#" class="nav__link">Home</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Portfolio</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Services</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main__wrap">
+        <div class="main__gallery slider hidden">
+          <ul class="slider__list">
+            <li class="slider__item slider__item--current"><img src="images/gallery/photo1.jpg" alt="First image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo2.png" alt="Second image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo3.png" alt="Third image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo4.jpg" alt="Forth image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo5.jpg" alt="Fifth image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo6.jpg" alt="Sixth image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo7.jpg" alt="Seventh image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo8.jpg" alt="Eighth image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo9.png" alt="Ninth image" class="slider__image"/></li>
+            <li class="slider__item"><img src="images/gallery/photo10.jpg" alt="Tenth image" class="slider__image"/></li>
+          </ul>
+          <button class="slider__controls slider__controls--prev">&lt;</button>
+          <button class="slider__controls slider__controls--next">&gt;</button>
+        </div>
+        <div class="main__form login">
+          <form action="#" class="login__form">
+            <label for="login__username" class="login__label">User:</label>
+            <span class="login__username__error login__username__error--length hidden">Login must contain at least 3 characters</span>
+            <span class="login__username__error login__username__error--exist hidden">Login doesn't exist (hint: enter 'Admin', 'Sasha' or 'John')</span>
+            <input type="text" id="login__username" class="login__input">
+            <label for="login__password" class="login__label">Password:</label>
+            <span class="login__password__error login__password__error--length hidden">Password must contain at least 5 characters</span>
+            <span class="login__password__error login__password__error--invalid hidden">Invalid password</span>
+            <input type="password" id="login__password" class="login__input">
+            <button class="login__submit button button--success">Login</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__wrap">
+        <a href="#" class="footer__logo" title="Company logo">
+          <span class="footer__appName">EBuilders</span>
+        </a>
+        <button class="logout-btn button button--info hidden">Logout</button>
+        <div class="footer__info social">
+          <ul class="social__list">
+            <li class="social__item">
+              <a href="#" class="social__link" title="Link to facebook account">
+                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="social__item">
+              <a href="#" class="social__link" title="Link to twitter account">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="social__item">
+              <a href="#" class="social__link" title="Link to youtube channel">
+                <i class="fa fa-youtube" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="social__item">
+              <a href="#" class="social__link" title="Link to google plus account">
+                <i class="fa fa-google-plus" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+          <span class="social__copyright">
+            &copy; Oleksandr Strelchenko, 2016
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+<script src="scripts/utils/md5.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
